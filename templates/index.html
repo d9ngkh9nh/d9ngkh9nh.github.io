@@ -1,0 +1,279 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khanh Dang</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Your custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', sans-serif;
+            /* Use Futura font for all text */
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .read-more {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .full-text {
+            display: none;
+        }
+
+        .cover-image {
+            width: 100%;
+            /* Make the image span the full width of the screen */
+            max-width: 100%;
+            height: fit-content;
+            /* Maintain aspect ratio */
+        }
+
+        .cover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            /* Text color on the cover image */
+        }
+
+        .partner-section {
+            background-color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .partner-section h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            overflow-x: auto;
+            /* Enable horizontal scrolling if the logos overflow the container */
+            white-space: nowrap;
+            /* Prevent logos from wrapping to the next line */
+        }
+
+        .partner-logo {
+            /* width: 150px; */
+            height: 80px;
+            /* Adjust as needed */
+            margin: 20px;
+            transition: transform 0.3s ease-in-out;
+            /* Add transition for smooth hover effect */
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.1);
+            /* Increase size on hover */
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            /* Adjust the duration as needed */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Khanh Dang</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cover Image -->
+    <div class="position-relative">
+        <img src="{{ url_for('static', filename='images/cover.jpg') }}" alt="Cover Image" class="cover-image">
+        <div class="cover-text">
+            <h1>Welcome to Your Medium</h1>
+            <p>Your source for amazing content and more.</p>
+        </div>
+    </div>
+
+    <!-- Partner Section -->
+    <div class="partner-section">
+        <div class="container">
+            <h2>Tool and Tech</h2>
+            <div class="partner-logos">
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <!-- New partner logos -->
+                        <img src="{{ url_for('static', filename='images/Python.png') }}" alt="Python"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Databricks.png') }}" alt="Databricks"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Apache_Spark.png') }}" alt="Apache Spark"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Airflow.png') }}" alt="Airflow"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Trino.png') }}" alt="Trino"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Postgresql.png') }}" alt="Postgresql"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/PowerBI.png') }}" alt="PowerBI"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Quicksight.png') }}" alt="Quicksight"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Metabase.png') }}" alt="Metabase"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Superset.png') }}" alt="Superset"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Google_Sheet.png') }}" alt="Google Sheet"
+                            class="partner-logo">
+                        <img src="{{ url_for('static', filename='images/Excel.png') }}" alt="Excel"
+                            class="partner-logo">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% block content %}
+    <!-- ... Existing content ... -->
+
+    <!-- Latest Blog Posts -->
+    <h2>Latest Blog Posts</h2>
+    {% for post in blog_posts %}
+    <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Article 1 -->
+                <div class="article">
+                    <h2>Article Title</h2>
+                    <p>Author | Date</p>
+                    <img src="https://via.placeholder.com/800x400" alt="Article Image" class="img-fluid">
+                    <div class="full-text">
+                        <p>To access and use all Apple Card features and products available only to Apple Card users,
+                            you must add Apple Card to Wallet on an iPhone or iPad that supports and has the latest
+                            version of iOS or iPadOS. Apple Card is subject to credit approval, available only for
+                            qualifying applicants in the United States, and issued by Goldman Sachs Bank USA, Salt Lake
+                            City Branch.</p>
+                    </div>
+                    <div class="partial-text">
+                        <p>This is the partial content of your article. It's not the full text, but you can read more...
+                        </p>
+                        <a class="read-more">Read more...</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 (Add more articles as needed) -->
+                <div class="article">
+                    <h2>Another Article Title</h2>
+                    <p>Author | Date</p>
+                    <img src="https://via.placeholder.com/800x400" alt="Article Image" class="img-fluid">
+                    <div class="full-text">
+                        <p>To access and use all Apple Card features and products available only to Apple Card users,
+                            you must add Apple Card to Wallet on an iPhone or iPad that supports and has the latest
+                            version of iOS or iPadOS. Apple Card is subject to credit approval, available only for
+                            qualifying applicants in the United States, and issued by Goldman Sachs Bank USA, Salt Lake
+                            City Branch.</p>
+                    </div>
+                    <div class="partial-text">
+                        <p>This is the partial content of another article. You can read more...</p>
+                        <a class="read-more">Read more...</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar (Popular Articles, Categories, etc.) -->
+            <div class="col-md-4">
+                <h3>Popular Articles</h3>
+                <ul>
+                    <li><a href="{{ url_for('article1') }}" target="_self">Article 1</a></li>
+                    <li><a href="{{ url_for('article2') }}" target="_self">Article 2</a></li>
+                    <li><a href="{{ url_for('article3') }}" target="_self">Article 3</a></li>
+                    <!-- Add more popular articles here -->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (for Bootstrap components that require them) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Your custom JavaScript for Read more... interaction -->
+    <script>
+        $(document).ready(function () {
+            $(".read-more").click(function () {
+                $(this).closest(".partial-text").hide();
+                $(this).closest(".article").find(".full-text").show();
+            });
+        });
+    </script>
+
+</body>
+
+</html>
